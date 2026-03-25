@@ -34,6 +34,13 @@
     font-size: 50px;
 }
 
+#end-title {
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .content-font {
     font-family: content-title;
 }
@@ -49,13 +56,18 @@
     display: inline-block;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
+.background-image-end {
+    background-image: url(img/Haiku-end-bckg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
 #haiku-end {
     position: relative;
     margin: 0;
     min-height: 100vh;
     overflow-x: hidden;
-    background: linear-gradient(#C2FBFF, #a8e8f0);
 }
 
 .floating-poems-root {
