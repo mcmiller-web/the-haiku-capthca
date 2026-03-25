@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haiku Topic</title>
+        <link rel="stylesheet" href="styles.css">
+
+</head>
+<body id="prompt-page">
+    <main class="prompt-overlay">
+        <h1 class="page-titles" id="prompt-title" style="max-width: 410px;">You'll start with a prompt.</h1>
+        <p class="content-font" style="max-width: 280px;">Click this button to choose a topic for your haiku</p>
+
+        <!--PROMPT GENERATION BUTTON-->
+        <button id="generate-prompt-btn" class="image-btn" type="button" aria-label="Generate a haiku prompt">
+            <img src="img/generate-button.png" alt="Generate prompt" width="210px">
+        </button>
+        <br>
+        <p class="content-font" id="" style="font-size: 40px;">Haiku Prompt: <span id="haiku-topic"></span></p>
+        <p class="content-font" id="new-prompt" style="max-width: 162px;">If you don't like this prompt, click the generate button again to get a new one.</p>
+
+        <div class="bottom-right-section">
+            <a id="to-entry-link" href="haiku-entry.html">
+                <img src="img/write-haiku-button.png" alt="Go to haiku entry page" width="350px">
+            </a>
+        </div>
+    </main>
+
+    <script>
+        const topics = [
+            "College Classes",
+            "Having No Flexi",
+            "The Art of Nothing",
+            "Relaxing",
+            "Coffee Dependency",
+            "Finals Week",
+            "Group Projects",
+            "Laundry Day",
+            "San Francisco",
+            "Food",
+            "Friend Groups",
+            "The Weather",
+            "Procrastination",
+            "The Future",
+            "Free Time"
+        ];
+
+        const topicDisplay = document.getElementById("haiku-topic");
+        const generateButton = document.getElementById("generate-prompt-btn");
+        const newPromptButton = document.getElementById("new-prompt-btn");
+        const entryLink = document.getElementById("to-entry-link");
+
+        function saveTopic(topic) {
+            localStorage.setItem("haikuTopic", topic);
+        }
+
+        function generateTopic() {
+            const randomIndex = Math.floor(Math.random() * topics.length);
+            const topic = topics[randomIndex];
+            topicDisplay.textContent = topic;
+            saveTopic(topic);
+        }
+
+        function ensureTopicSavedOnNavigation() {
+            const topic = topicDisplay.textContent.trim();
+            if (topic) saveTopic(topic);
+        }
+
+        generateButton.addEventListener("click", generateTopic);
+        newPromptButton.addEventListener("click", generateTopic);
+        entryLink.addEventListener("click", ensureTopicSavedOnNavigation);
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const saved = localStorage.getItem("haikuTopic");
+            if (saved) topicDisplay.textContent = saved;
+        });
+    </script>
+</body>
+</html>

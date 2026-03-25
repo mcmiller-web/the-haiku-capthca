@@ -1,0 +1,318 @@
+@font-face {
+    font-family: prime-title;
+    src: url(fonts/TitanOne-Regular.ttf);
+}
+
+@font-face {
+    font-family: content-title;
+    src: url(fonts/LexendDeca-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: content-title;
+    src: url(fonts/);
+}
+
+#index {
+    
+}
+
+.page-titles {
+    font-family: prime-title;
+}
+
+#home-title {
+    font-size: 60px;
+}
+
+#space-specs {
+    font-size: 25px;
+    margin-top: 45px;
+    margin-bottom: 1px;}
+
+#prompt-title {
+    font-size: 50px;
+}
+
+.content-font {
+    font-family: content-title;
+}
+
+#new-prompt {
+    font-size: 9px;
+}
+
+#haiku-topic {
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#haiku-end {
+    position: relative;
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: linear-gradient(#C2FBFF, #a8e8f0);
+}
+
+.floating-poems-root {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.floating-poem {
+    position: absolute;
+    max-width: min(14rem, 38vw);
+    font-family: content-title, system-ui, sans-serif;
+    font-size: clamp(0.8rem, 1.9vw, 1.05rem);
+    line-height: 1.45;
+    white-space: pre-line;
+    color: rgba(30, 50, 60, 0.95);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.85);
+    transform-origin: center center;
+    animation-name: float-drift;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    will-change: transform;
+}
+
+@keyframes float-drift {
+    0% {
+        transform: translate(0, 0) rotate(-1deg);
+    }
+    33% {
+        transform: translate(2.5vw, -3vh) rotate(1.2deg);
+    }
+    66% {
+        transform: translate(-2vw, 2vh) rotate(-0.8deg);
+    }
+    100% {
+        transform: translate(1.5vw, 1vh) rotate(0.5deg);
+    }
+}
+
+.end-container {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem 1.25rem;
+    box-sizing: border-box;
+}
+
+#prompt-page,
+#haiku-entry-page {
+    background-image: url('img/prompt-impv-bckg.png');
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.prompt-overlay {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.image-btn {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.bottom-right-section {
+    position: absolute;
+    bottom: 170px;
+    right: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;}
+
+#haiku-entry-heading {
+    font-size: 50px;
+    line-height: 1.15;
+    max-width: min(100%, 42rem);
+    margin: 0;
+}
+
+.haiku-topic-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35em 0.5em;
+}
+
+.haiku-topic-line .haiku-topic-value {
+    font-family: prime-title;
+    font-size: 45px;
+    color: rgb(23, 120, 248);
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.haiku-entry-narrow {
+    max-width: 780px;
+}
+
+/* This styling keeps the goat and submit button from overlapping on the entry page*/
+.haiku-entry-main.prompt-overlay {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    align-content: center;
+    column-gap: clamp(1.25rem, 5vw, 3rem);
+    row-gap: 1rem;
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+}
+
+.haiku-entry-content {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+    min-width: 0;
+}
+
+.haiku-entry-aside {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+    justify-self: end;
+    flex-shrink: 0;
+}
+
+.haiku-entry-main .haiku-textarea {
+    margin-bottom: 0;
+}
+
+.goat-img {
+    width: 550px;
+    height: auto;
+    display: block;
+}
+
+.haiku-entry-aside .image-btn img {
+    max-width: min(200px, 40vw);
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 700px) {
+    .haiku-entry-main.prompt-overlay {
+        grid-template-columns: 1fr;
+        align-items: stretch;
+    }
+
+    .haiku-entry-aside {
+        grid-column: 1;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-items: flex-end;
+        width: 100%;
+        padding-top: 0.5rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        margin-top: 0.25rem;
+    }
+
+    .haiku-entry-goat {
+        max-width: min(200px, 55vw);
+    }
+}
+
+.haiku-textarea {
+    width: 100%;
+    max-width: 280px;
+    min-height: 280px;
+    resize: vertical;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    padding: 12px;
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: content-title;
+    border-radius: 10px;
+    border: 2px solid rgba(0,0,0,0.2);
+    background: rgba(255,255,255,0.9);
+}
+
+.content-text {
+    font-family: content-title;
+}
+
+#wrong-haiku-page .wrong-haiku-main {
+    padding: 24px 24px 24px 10px;
+    max-width: 40rem;
+}
+
+#wrong-haiku {
+    background-color: #FFFF00;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.wrong-haiku-main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+}
+
+.goat-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.glitch-goat {
+    display: block;
+    animation: glitch-move 3s infinite alternate ease-in-out,
+               glitch-color 1.5s infinite linear;
+}
+
+@keyframes glitch-move {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-2px, 2px) rotate(-1deg); }
+    50% { transform: translate(3px, -2px) rotate(1deg); }
+    75% { transform: translate(-3px, 1px) rotate(-0.8deg); }
+    100% { transform: translate(2px, -1px) rotate(0.5deg); }
+}
+
+@keyframes glitch-color {
+    0% { filter: none; }
+    30% { filter: hue-rotate(20deg) saturate(1.2); }
+    60% { filter: hue-rotate(340deg) saturate(1.4); }
+    100% { filter: none; }
+}
